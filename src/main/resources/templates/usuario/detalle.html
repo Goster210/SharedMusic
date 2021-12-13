@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:insert="fragments :: headerfiles">
+</head>
+
+<body class="bg-dark">
+    <br><br>
+
+    <div class="container">
+        <div class="card text-white bg-secondary border-info">
+            <div class="card-header text-center bg-secondary text-white border-info">
+                <h1 class="text-center text-white">DETALLES DEL USUARIO</h1>
+            </div>
+            <div class="card-body text-white bg-secondary">
+                <h5 class="card-title" th:text="'Nombre completo: ' + ${usuario.nombreCompleto}"></h5>
+                <b>Cedula:</b>
+				<p class="card-text" th:text="${usuario.cedula} + ''"></p>
+				<b>Correo:</b>
+				<p class="card-text" th:text=" ${usuario.correo} + ''"></p>
+				<b>Nombre de Usuario:</b>
+				<p class="card-text" th:text="${usuario.nombreUsuario} + ''"></p>
+                <p class="text-justify"><b>Descripcion: </b>Este usuario pertenece a nuestra tienda Virtual.</p>
+                <a th:href="@{/usuario/lista}" class="btn btn-info">
+                    <i class="fas fa-arrow-circle-left"></i> Volver
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 60px;"></div>
+    <footer th:insert="fragments :: footer"></footer>
+    <div th:insert="fragments :: scripts"></div>
+</body>
+
+</html>

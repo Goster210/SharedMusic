@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:insert="fragments :: headerfiles">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+
+<body class="bg-dark">
+	<header th:insert="fragments :: nav"></header>
+	<img class="rounded mx-auto d-block"
+		src="https://lh3.googleusercontent.com/proxy/9XUpFKTG1nmYi_dTCiS5Axp17tcui2yavB7rlZNTj50DLYq9-NFGIsYaVpmNnHf_EZ0l2ByXXhk63prEeWB86nFNgb-m-shc0NEAnZjnc5m0t82g9JoCulEt"
+		alt="Card image cap" width="25%" height="25%" />
+	<h1 class="text-center text-white bg-dark">CANCIONES</h1>
+	<br>
+	<div class="container ">
+		<div class="row justify-content-between">
+			<div class="col-4">
+				<div>
+					<a th:href="@{/cancion/nuevo}" >
+						<button class="btn btn btn-info">
+							<i class="fas fa-user-plus"></i> Agregar Cancion
+
+						</button>
+					</a> <a th:href="@{/}">
+						<button type="button" th:href="@{/}"
+							class="btn btn-outline-info">
+							<i class="fas fa-reply-all"></i> Volver al menu
+						</button>
+					</a>
+				</div>
+			</div>
+			<div class="col-4">
+				<div>
+					<form class="form-inline" th:action="@{/cancion/buscar}"
+						th:object="${cancion}" method="post">
+						<div class="form-group mx-sm-3 mb-2">
+
+							<input type="number" class="form-control" id="busquedaId"
+								name="busquedaId" placeholder="Ingresa el ID">
+						</div>
+						<button type="submit" class="btn btn-info mb-2">Buscar</button>
+					</form>
+				</div>
+
+			</div>
+		</div>
+		<div class="container text-white">
+			<div class="row">
+				<table class="table text-white table-white text-center">
+					<thead>
+						<tr>
+							<th scope="col">Nombre</th>
+							<th scope="col">Genero</th>
+							<th scope="col">Artista</th>
+							<th scope="col">Likes</th>
+							<th scope="col">Reproducciones</th>
+							<th scope="col">Link</th>
+							<th scope="col">Ver</th>
+							<th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Editar</th>
+							<th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="cancion: ${cancion}">
+
+							<td th:text="${cancion.nombre}"></td>
+							<td th:text="${cancion.genero}"></td>
+							<td th:text="${cancion.artista}"></td>
+							<td th:text="${cancion.cantidad_likes}"></td>
+							<td th:text="${cancion.numero_reproducciones}"></td>
+							<td >
+							<iframe width="140" height="78"
+								src="https://www.youtube.com/embed/6iwjYpma4kY"
+								title="YouTube video player" frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowfullscreen></iframe>	
+							</td>
+
+									
+
+							<td><a th:href="@{'/cancion/detalle/' + ${cancion.id}}"><button
+										class="btn btn-outline-success">
+										<i class="far fa-eye"></i>
+									</button></a></td>
+							<td sec:authorize="hasRole('ROLE_ADMIN')"><a
+								th:href="@{'/cancion/editar/' + ${cancion.id}}"><button
+										class="btn btn-outline-warning">
+										<i class="far fa-edit"></i>
+									</button></a></td>
+							<td sec:authorize="hasRole('ROLE_ADMIN')"><a
+								th:href="@{'/cancion/borrar/' + ${cancion.id}}"><button
+										class="btn btn-outline-danger">
+										<i class="far fa-trash-alt"></i>
+									</button></a></td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div style="margin-bottom: 60px;"></div>
+		<footer th:insert="fragments :: footer"></footer>
+		<div th:insert="fragments :: scripts"></div>
+	</div>
+
+
+
+</body>
+
+</html>

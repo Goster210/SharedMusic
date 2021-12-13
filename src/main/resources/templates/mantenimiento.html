@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Usuarios</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+
+<body>
+    <div class="container">
+        <br>
+        <h2>
+            Agregar usuario</h2>
+        <form action="#" th:action="@{/mantenimiento}" th:object="${usuario}" method="post">
+            <div class="form-group">
+                <label for="nombre">Nombre Completo</label> <input type="text" class="form-control" id="nombre" th:field="*{nombreCompleto}" name="nombre">
+            </div>
+            <input type="hidden" th:field="*{id}" name="id" id="id">
+            <div class="form-group">
+                <label for="nombre">Cedula</label> <input type="text" class="form-control" id="cedula" th:field="*{cedula}" name="cedula">
+            </div>
+            <div class="form-group">
+                <label for="nombre">Correo Electronico</label> <input type="text" class="form-control" id="correo" th:field="*{correo}" name="correo">
+            </div>
+            <div class="form-group">
+                <label for="nombre">Usuario</label> <input type="text" class="form-control" id="usuario" th:field="*{usuario}" name="usuario">
+            </div>
+            <button type="submit" class="btn btn-success">Guardar</button>
+        </form>
+    </div>
+</body>
+
+</html>

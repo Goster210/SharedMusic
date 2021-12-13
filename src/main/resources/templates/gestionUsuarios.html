@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Gestion de usuarios</title>
+    <!-- Bootstrap CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+
+<body>
+
+
+
+
+    <div class="container">
+        <!-- <h1 th:text="'Hola, ' + ${usuario.nombreCompleto} + '!'"></h1> -->
+        <h2><a href="/salir" class="btn btn-primary">Salir</a></h2>
+        <br>
+        <h2 th:if="${listaUsuarios.isEmpty()}">
+            No hay Usuarios que Gestionar</h2>
+        <div th:if="${!listaUsuarios.isEmpty()}">
+            <h2> Gestión de Usuarios</h2>
+            <br>
+            <table class="table text-white table-white text-center">
+                <thead>
+                    <tr>
+                        <th>Nombre Completo</th>
+                        <th>Cedula</th>
+                        <th>Correo Electronico</th>
+                        <th>Usuario</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="usuarioItem : ${listaUsuarios}">
+                        <td th:text="${usuarioItem.nombreCompleto}">
+                        <td th:text="${usuarioItem.cedula}">
+                        <td th:text="${usuarioItem.correo}">
+                        <td th:text="${usuarioItem.usuario}">
+                        <td><a class="btn btn-info" th:href="@{/mantenimiento/{id}(id=${usuarioItem.id})}">Editar</a></td>
+                        <td><a class="btn btn-danger" th:href="@{/eliminar/{id}(id=${usuarioItem.id})}">Eliminar</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <div>
+            <a href="/mantenimiento/0" class="btn btn-primary">Agregar Nuevo Usuario</a>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
