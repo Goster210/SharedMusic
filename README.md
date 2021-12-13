@@ -23,7 +23,7 @@ F:\proyectos\
 nota: tenga cuidado de cambiar la ruta del repositorio de acuerdo al que usted este utilizando
 
 ~~~
-   git clone https://github.com/LUALROAL/DESARROLLO-DE-SOFTWARE_GRUPO3.git
+   git clone https://github.com/Goster210/SharedMusic.git
 ~~~
 
 Una vez este descargado el proyecto podrá abrirlo con cualquier editor de texto o IDE de desarrollo,
@@ -109,7 +109,7 @@ Ejecute los siguientes script en una consola de la base de datos:
 
 ~~~sql
 	
-	INSERT INTO usuario ( cedula, correo, nombre_completo, nombre_usuario, password) VALUES(NULL, NULL, NULL, 'admininicial', '$2a$10$zfecf9gT4kj65EEkaZPPFODmNaz/PqBiLZf9YDf2z.3CjN4lNGU06');    
+	INSERT INTO usuario ( cedula, correo, nombre_completo, nombre_usuario, password) VALUES(NULL, NULL, NULL, 'adminshared', '$2a$10$/imVlaiTW5iKc.HuRBGx4uF9535uUZNQ.6HpvZ6jAMNwzEsut8CTW');    
 	
 	INSERT INTO usuario_rol (usuario_id, rol_id) VALUES(1, 1);
     INSERT INTO usuario_rol (usuario_id, rol_id) VALUES(1, 2);
