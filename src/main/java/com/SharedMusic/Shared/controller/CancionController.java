@@ -1,6 +1,6 @@
 package com.SharedMusic.Shared.controller;
 
-import java.util.List; 
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -44,9 +44,9 @@ public class CancionController {
 	@PostMapping("/guardar")
 	public ModelAndView crear(@RequestParam String genero, @RequestParam String nombre, @RequestParam String link,
 			@RequestParam String artista) {
-		
+
 		System.out.println("si llego");
-		
+
 		ModelAndView mv = new ModelAndView();
 		if (StringUtils.isBlank(nombre)) {
 			mv.setViewName("cancion/nuevo");
@@ -78,8 +78,11 @@ public class CancionController {
 			busId = Integer.parseInt(busquedaId);
 		} catch (Exception e) {
 		}
-		if (!cancionService.existsById(busId))
+		if (!cancionService.existsById(busId)) {
+			redirectAttrs.addFlashAttribute("error", "Esa cancion no existe");
 			return new ModelAndView("redirect:/cancion/lista");
+		}
+
 		Cancion cancion = cancionService.getOne(busId).get();
 		ModelAndView mv = new ModelAndView("/cancion/detalle");
 		mv.addObject("cancion", cancion);
