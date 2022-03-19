@@ -34,6 +34,7 @@ public class CancionController {
 		return mv;
 	}
 
+
 	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("nuevo")
 	public String nuevo() {
@@ -141,6 +142,21 @@ public class CancionController {
 			// TODO: handle exception
 		}
 		return new ModelAndView("redirect:/cancion/lista");
+	}
+	@GetMapping("/like/{id}")
+	public ModelAndView likeCancion(@PathVariable("id") int id) {
+		Cancion cancion = cancionService.getOne(id).get();
+		try {
+			if (cancionService.existsById(id)) {
+				int likes =Integer.parseInt(cancion.getCantidad_likes());
+				likes ++;
+				cancion.setCantidad_likes(Integer.toString(likes));
+				cancionService.save(cancion);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return new ModelAndView("redirect:/index");
 	}
 
 }
