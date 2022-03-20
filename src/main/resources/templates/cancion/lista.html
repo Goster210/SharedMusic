@@ -81,7 +81,7 @@
 							<td th:text="${cancion.cantidad_likes}"></td>
 							<td th:text="${cancion.numero_reproducciones}"></td>
 							<td><iframe width="140" height="78"
-									src="https://www.youtube.com/embed/6iwjYpma4kY"
+									src= th:text="${cancion.link}"
 									title="YouTube video player" frameborder="0"
 									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 									allowfullscreen></iframe></td>

@@ -1,6 +1,5 @@
 package com.SharedMusic.Shared.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +15,6 @@ public class Cancion {
 	private int id;
 
 	@NotNull
-	@Column(unique = true)
 
 	private String genero;
 	private String nombre;

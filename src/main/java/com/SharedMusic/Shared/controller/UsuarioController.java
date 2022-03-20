@@ -58,7 +58,6 @@ public class UsuarioController {
 	 */
 	@PostMapping("/actualizar")
 	public ModelAndView actualizar(Usuario usuarioDto, Model model) {
-		System.out.println("Si entro al registro");
 		DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
 		System.out.println("yyyy/MMMM/dd HH:mm:ss-> " + dtf3.format(LocalDateTime.now()));
 

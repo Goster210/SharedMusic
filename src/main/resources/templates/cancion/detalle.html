@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:insert="fragments :: headerfiles">
 </head>
 
 <body class="bg-dark">
-    <br><br>
+	<br>
+	<br>
 
-    <div class="container">
-        <div class="card text-white bg-secondary border-info">
-            <div class="card-header text-center bg-secondary text-white border-info">
-                <h1 class="text-center text-white">DETALLES CANCION</h1>
-            </div>
-            <div class="card-body text-white bg-secondary">
-                <h5 class="card-title" th:text="'Nombre cancion ' + ${cancion.nombre}"></h5>
-                <b>Genero:</b>
+	<div class="container">
+		<div class="card text-white bg-secondary border-info">
+			<div
+				class="card-header text-center bg-secondary text-white border-info">
+				<h1 class="text-center text-white">DETALLES CANCION</h1>
+			</div>
+			<div class="card-body text-white bg-secondary">
+				<h5 class="card-title"
+					th:text="'Nombre cancion ' + ${cancion.nombre}"></h5>
+				<b>Genero:</b>
 				<p class="card-text" th:text="${cancion.genero} + ''"></p>
 				<b>Link:</b>
 				<p class="card-text" th:text=" ${cancion.link} + ''"></p>
@@ -24,17 +28,17 @@
 				<p class="card-text" th:text="${cancion.cantidad_likes} + ''"></p>
 				<b>Numero de Reproducciones:</b>
 				<p class="card-text" th:text="${cancion.numero_reproducciones} + ''"></p>
-                
-                <a th:href="@{/cancion/lista}" class="btn btn-info">
-                    <i class="fas fa-arrow-circle-left"></i> Volver
-                </a>
-            </div>
-        </div>
-    </div>
 
-    <div style="margin-bottom: 60px;"></div>
-    <footer th:insert="fragments :: footer"></footer>
-    <div th:insert="fragments :: scripts"></div>
+				<a th:href="@{/cancion/lista}" class="btn btn-info"> <i
+					class="fas fa-arrow-circle-left"></i> Volver
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div style="margin-bottom: 60px;"></div>
+	<footer th:insert="fragments :: footer"></footer>
+	<div th:insert="fragments :: scripts"></div>
 </body>
 
 </html>

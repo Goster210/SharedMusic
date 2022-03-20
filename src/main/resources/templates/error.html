@@ -1,29 +1,31 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="es">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="es">
 
 <head th:insert="fragments :: headerfiles">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Error</title>
 </head>
 
 <body>
-    <header th:insert="fragments :: nav"></header>
+	<header th:insert="fragments :: nav"></header>
 
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="display-4">Error pa</h1>
-            <p class="lead"></p>
-            <hr class="my-4">
-            <p></p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-        </div>
-    </div>
+	<div class="container">
+		<div class="jumbotron">
+			<h1 class="display-4">Error no puedes hacer eso</h1>
+			<p class="lead"></p>
+			<hr class="my-4">
+			<p></p>
+			<a class="btn btn-primary btn-lg" href="#" role="button">Learn
+				more</a>
+		</div>
+	</div>
 
-    <div style="margin-bottom: 60px;"></div>
-    <footer th:insert="fragments :: footer"></footer>
-    <div th:insert="fragments :: scripts"></div>
+	<div style="margin-bottom: 60px;"></div>
+	<footer th:insert="fragments :: footer"></footer>
+	<div th:insert="fragments :: scripts"></div>
 </body>
 
 </html>

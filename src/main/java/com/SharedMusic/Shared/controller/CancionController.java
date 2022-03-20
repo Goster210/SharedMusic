@@ -1,5 +1,7 @@
 package com.SharedMusic.Shared.controller;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,19 +36,14 @@ public class CancionController {
 		return mv;
 	}
 
-
-	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("nuevo")
 	public String nuevo() {
 		return "cancion/nuevo";
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/guardar")
 	public ModelAndView crear(@RequestParam String genero, @RequestParam String nombre, @RequestParam String link,
 			@RequestParam String artista) {
-
-		System.out.println("si llego");
 
 		ModelAndView mv = new ModelAndView();
 		if (StringUtils.isBlank(nombre)) {
@@ -143,13 +140,14 @@ public class CancionController {
 		}
 		return new ModelAndView("redirect:/cancion/lista");
 	}
+
 	@GetMapping("/like/{id}")
 	public ModelAndView likeCancion(@PathVariable("id") int id) {
 		Cancion cancion = cancionService.getOne(id).get();
 		try {
 			if (cancionService.existsById(id)) {
-				int likes =Integer.parseInt(cancion.getCantidad_likes());
-				likes ++;
+				int likes = Integer.parseInt(cancion.getCantidad_likes());
+				likes++;
 				cancion.setCantidad_likes(Integer.toString(likes));
 				cancionService.save(cancion);
 			}
@@ -157,6 +155,50 @@ public class CancionController {
 			// TODO: handle exception
 		}
 		return new ModelAndView("redirect:/index");
+	}
+
+	@PostMapping(value = "/ordenar")
+	public ModelAndView ordenamiento(@RequestParam String ordenarPor, HttpServletRequest request,
+			RedirectAttributes redirectAttrs) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/index");
+		List<Cancion> cancion = cancionService.list();
+		System.out.println(cancion.size());
+		mv.addObject("cancion", cancion);
+		if (ordenarPor.equalsIgnoreCase("Numero de me gusta")) {
+			Collections.sort(cancion, new Comparator<Cancion>() {
+				@Override
+				public int compare(Cancion o1, Cancion o2) {
+					return o2.getCantidad_likes().compareToIgnoreCase(o1.getCantidad_likes());
+				}
+			});
+		}
+		if (ordenarPor.equalsIgnoreCase("Nombre de la cancion (A-Z)")) {
+			Collections.sort(cancion, new Comparator<Cancion>() {
+				@Override
+				public int compare(Cancion o1, Cancion o2) {
+					return o1.getNombre().compareToIgnoreCase(o2.getNombre());
+				}
+			});
+		}
+		if (ordenarPor.equalsIgnoreCase("Genero (A-Z)")) {
+			Collections.sort(cancion, new Comparator<Cancion>() {
+				@Override
+				public int compare(Cancion o1, Cancion o2) {
+					return o1.getGenero().compareToIgnoreCase(o2.getGenero());
+				}
+			});
+		}
+		if (ordenarPor.equalsIgnoreCase("Artista (A-Z)")) {
+			Collections.sort(cancion, new Comparator<Cancion>() {
+				@Override
+				public int compare(Cancion o1, Cancion o2) {
+					return o1.getArtista().compareToIgnoreCase(o2.getArtista());
+				}
+			});
+		}
+
+		return mv;
 	}
 
 }

@@ -7,7 +7,7 @@
 
 <body class="bg-dark">
 	<header th:insert="fragments :: nav"></header>
-	<h1 class="text-center text-white bg-dark">EDITAR Cancion</h1>
+	<h1 class="text-center text-white bg-dark">EDITAR CANCION</h1>
 	<br>
 	<br>
 
@@ -34,12 +34,19 @@
 
 					<div class="form-group row">
 						<div class="col-sm-6">
-							<label for="genero">Genero </label> <input th:field="*{genero}"
-								type="text" class="form-control" id="genero" name="genero"
-								required="required" autocomplete="off">
+							<label for="genero">Genero </label> 
+								<select class="form-control"  id="genero" name="genero">
+								<option>Pop</option>
+								<option>Rock</option>
+								<option>Reggaeton</option>
+								<option>Ska</option>
+								<option>Electronica</option>
+								<option>Bolero</option>
+								<option>Musica popular</option>
+							</select>
 						</div>
 						<div class="col-sm-6">
-							<label for="link">link </label> <input th:field="*{link}"
+							<label for="link">Link </label> <input th:field="*{link}"
 								type="text" class="form-control" id="link" name="link"
 								required="required" autocomplete="off">
 						</div>
@@ -48,7 +55,7 @@
 
 					<div class="form-group row">
 						<div class="col-sm-6">
-							<label for="artista">artista</label> <input th:field="*{artista}"
+							<label for="artista">Artista</label> <input th:field="*{artista}"
 								type="text" class="form-control" id="artista" name="artista"
 								required="required" autocomplete="off">
 						</div>

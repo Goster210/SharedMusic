@@ -12,29 +12,42 @@
         <div class="row">
             <div class="col-md-4 mx-auto text-white">
                 <form th:action="@{/cancion/guardar}" method="post">
-                    <div class="form-group">
-                        <!-- control ataque csrf -->
-                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-                        <!-- fin control ataque csrf -->
-                        <label for="nombre">Nombre de la Cancion</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" required="required" autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <label for="genero">Genero</label>
-                        <input type="text" class="form-control" id="genero" name="genero" required="required" autocomplete="off">
-                    </div>
+					<div class="form-group">
+						<!-- control ataque csrf -->
+						<input type="hidden" th:name="${_csrf.parameterName}"
+							th:value="${_csrf.token}">
+						<!-- fin control ataque csrf -->
+						<label for="nombre">Nombre de la Cancion</label> <input
+							type="text" class="form-control" id="nombre" name="nombre"
+							required="required" autocomplete="off">
+					</div>
 
-                    <div class="form-group">
-                        <label for="link">link</label>
-                        <input type="text" class="form-control" id="link" name="link" required="required" autocomplete="off">
-                    </div>
+					<div class="form-group">
+						<label for="genero">Genero Musical</label> <select
+							class="form-control" id="genero" name="genero">
+							<option>Pop</option>
+							<option>Rock</option>
+							<option>Reggaeton</option>
+							<option>Ska</option>
+							<option>Electronica</option>
+							<option>Bolero</option>
+							<option>Musica popular</option>
+						</select>
+					</div>
 
-                    <div class="form-group">
-                        <label for="artista">artista</label>
-                        <input type="text" class="form-control" id="artista" name="artista" required="required" autocomplete="off">
-                    </div>
+					<div class="form-group">
+						<label for="link">Link</label> <input type="text"
+							class="form-control" id="link" name="link" required="required"
+							autocomplete="off">
+					</div>
 
-                    <div class="form-group">
+					<div class="form-group">
+						<label for="artista">Artista</label> <input type="text"
+							class="form-control" id="artista" name="artista"
+							required="required" autocomplete="off">
+					</div>
+
+					<div class="form-group">
                         <button type="submit" class="btn btn-info btn-block">
                             <i class="far fa-save"></i> Guardar</button>
                     </div>

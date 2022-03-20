@@ -12,6 +12,13 @@
 
 <body class="bg-dark">
 	<header th:insert="fragments :: nav"></header>
+	<div class="container">
+		<div
+			class="card  text-center text-white bg-secondary mb-3 border-info mb-3  ">
+			<h1 class="display-4" sec:authorize="isAuthenticated()">Muro
+				Musical - SharedMusic</h1>
+		</div>
+	</div>
 	<div class="container ">
 		<img class="rounded mx-auto d-block"
 			src="https://cdn.pixabay.com/photo/2015/12/09/22/09/music-1085655_960_720.png"
@@ -24,12 +31,12 @@
 			<h1 class="display-4" sec:authorize="!isAuthenticated()">Bienvenido
 				a SHARED MUSIC</h1>
 			<h1 class="display-4" sec:authorize="isAuthenticated()">
-				Bienvenido <span sec:authentication="name"></span>
+				Bienvenido: <span sec:authentication="name"></span>
 				<div class="col align-self-center">
 					<form sec:authorize="isAuthenticated()"
 						class="form-inline my-2 my-lg-0" th:action="@{/logout}"
 						method="post">
-						<button class="btn btn-success btn-block" type="submit">
+						<button class="btn btn-danger btn-block" type="submit">
 							<i class="fas fa-sign-out-alt"></i> Cerrar Sesion
 						</button>
 					</form>
@@ -56,17 +63,37 @@
 		</div>
 	</div>
 	<h1 class="display-4 " sec:authorize="isAuthenticated()">
-		<div class="container ">
-			<div
-				class="card text-center text-white bg-secondary mb-3 border-info mb-3">
-				<h1 class="display-4" sec:authorize="isAuthenticated()">Canciones
-					- SharedMusic</h1>
+		<div class="container">
+
+
+			<div class="row justify-content-between">
+				<div></div>
+				<div class="col-8">
+					<div>
+						<form class="form-inline" th:action="@{/cancion/ordenar}"
+							th:object="${cancion}" method="post">
+							<div class="form-group mx-sm-3 mb-2">
+								<select class="form-control" id="ordenarPor" name="ordenarPor">
+									<option>Numero de me gusta</option>
+									<option>Nombre de la cancion (A-Z)</option>
+									<option>Genero (A-Z)</option>
+									<option>Artista (A-Z)</option>
+								</select>
+							</div>
+							<button type="submit" class="btn btn-info mb-2">Ordenar</button>
+						</form>
+					</div>
+
+				</div>
 			</div>
+
+
+
 			<div class="card-group " th:each="cancion: ${cancion}">
 
-				<div class="card bg-dark">
+				<div class="card bg-dark col-8">
 					<div
-						class="card-body card text-white bg-secondary mb-3 border-info mb-3">
+						class="card-body card text-white bg-secondary mb-3 border-info mb-3 ">
 						<h5 th:text="'Artista:   '+${cancion.artista} + ''"></h5>
 						<h5 th:text="'Genero:   '+${cancion.genero} + ''"></h5>
 						<h5 th:text="'Likes:   '+${cancion.cantidad_likes} + ''"></h5>
@@ -78,13 +105,13 @@
 
 
 
-				<div class="card bg-dark">
+				<div class="card bg-dark col-8">
 					<div
-						class="card-body card text-white bg-secondary mb-3 border-info mb-3">
+						class="card-body card text-white bg-secondary mb-3 border-info mb-3 ">
 						<h5 class="card-title" th:text="${cancion.nombre}"></h5>
 						<a href="#" class="btn btn-primary">Reproducir</a> <a
 							th:href="@{'/cancion/like/' + ${cancion.id}}"><button
-								class="btn btn-outline-primary">
+								class="btn btn-primary">
 								<i class="fas fa-thumbs-up "></i>
 							</button></a>
 					</div>
