@@ -42,7 +42,7 @@ de la siguiente manera:
 1. debe correr en localhost 
 2. debe correr por el puerto por defecto de mysql 3306
 3. debe tener usuario y contraseña con permisos de lectura y escritura (se recomienda dejar el usuario root que tiene todos los privilegios solicitados)
-4. crear una base de datos llamada DB_Tienda
+4. crear una base de datos llamada sharedmusicdb
 
 
 
@@ -109,7 +109,7 @@ Ejecute los siguientes script en una consola de la base de datos:
 
 ~~~sql
 	
-	INSERT INTO usuario ( cedula, correo, nombre_completo, nombre_usuario, password) VALUES(NULL, NULL, NULL, 'adminshared', '$2a$10$/imVlaiTW5iKc.HuRBGx4uF9535uUZNQ.6HpvZ6jAMNwzEsut8CTW');    
+	INSERT INTO usuario ( cedula, correo, nombre_completo, nombre_usuario, password) VALUES(NULL, NULL, NULL, 'adminshared', '$2a$10$JojFaMWy68SaLtdszp9ha.RvEUrVvqfMN/.zaSxiwxuVaacJq/BAG');    
 	
 	INSERT INTO usuario_rol (usuario_id, rol_id) VALUES(1, 1);
     INSERT INTO usuario_rol (usuario_id, rol_id) VALUES(1, 2);
@@ -122,8 +122,8 @@ Ejecute los siguientes script en una consola de la base de datos:
 
 1. abra un navegador y coloque la ruta http://localhost:8080
 2. inicie sesion con los siguientes datos
-   usuario: admininicial
-   contraseña: admin123456
+   usuario: adminshared
+   contraseña: 1
 
 
 ### crear .war
